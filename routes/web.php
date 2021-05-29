@@ -30,3 +30,5 @@ Route::get('/data0247', function () {
 Route::get('/', 'PagesController@index0247');
 Route::get('/contactus0247', 'PagesController@contactus0247');
 Route::get('/data0247', 'DataController@index');
+Route::get('/data/edit0247/{id}','DataController@edit');
+Route::get('/data/data0247/{id}','DataController@update');

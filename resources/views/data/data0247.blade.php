@@ -27,7 +27,7 @@
       <td>{{$anggota->anggota_jk}}</td>
       <td>{{$anggota->anggota_telp}}</td>
       <td>
-      <a href="" class="badge badge-success ">edit</a>
+      <a href="/data/edit0247/{{ $anggota->anggota_id }}" class="badge badge-success ">edit</a>
       <a href="" class="badge badge-danger">delete</a>
       </td>
     </tr>

@@ -59,7 +59,11 @@ class DataController extends Controller
      */
     public function edit($id)
     {
-        //
+	    // mengambil data pegawai berdasarkan id yang dipilih
+        $soal1 = DB::table('anggota')->where('anggota_id',$id)->get();
+	    // passing data pegawai yang didapat ke view edit.blade.php
+	    return view('data.edit0247',['anggota' => $soal1]);
+ 
     }
 
     /**
@@ -69,9 +73,17 @@ class DataController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        // update data pegawai
+        DB::table('anggota')->where('anggota_id',$request->id)->update([
+            'anggota_nama' => $request->nama,
+            'anggota_alamat' => $request->alamat,
+            'anggota_jk' => $request->jk,
+            'anggota_telp' => $request->telp
+        ]);
+        // alihkan halaman ke halaman pegawai
+        return redirect('data0247');
     }
 
     /**
