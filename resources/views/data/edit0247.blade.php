@@ -10,7 +10,7 @@
                 <div class="card-header">Edit Data</div>
 
                 <div class="card-body">
-                    <form action="{{route('data0247.update',$p_ganjil3->id)}}" method="PUT">
+                    <form action="{{route('data0247.update',$p_ganjil3->id)}}" method="post">
                         @csrf
                         @method('PUT')
                         <div class="form-group row">

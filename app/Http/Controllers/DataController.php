@@ -76,10 +76,7 @@ class DataController extends Controller
 	    
        // $soal1 = DB::table('anggota')->where('anggota_id',$id)->get();
 	   // return view('data.edit0247',['anggota' => $soal1]);
-         //mengambil data dari database
          $p_ganjil3 = DB::table('pelanggan')->where('id',$id)->first();
-        
-         //passing data ke view edit.blade.php
          return view('data.edit0247',compact('p_ganjil3'));
  
     }
@@ -93,14 +90,12 @@ class DataController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //mengupdate data
         
-        DB::table('pelanggan')->where('pelanggan',$id)->update([
+        DB::table('pelanggan')->where('id',$id)->update([
             'nama'  => $request->nama,
             'alamat'=> $request->alamat,
         ]);
                 
-        //redirect setelah berhasil menjalankan update
         return redirect('/data0247')->with('status','Data Berhasil Diupdate');
     }
 
@@ -112,6 +107,7 @@ class DataController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('pelanggan')->where('id',$id)->delete();
+        return redirect('/data0247')->with('status','Data Berhasil Dihapus');
     }
 }

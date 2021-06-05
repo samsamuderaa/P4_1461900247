@@ -23,8 +23,12 @@
       <td>{{$pelanggan->nama}}</td>
       <td>{{$pelanggan->alamat}}</td>
       <td>
-      <a href="{{route('data0247.edit',$pelanggan->id)}}" class="badge badge-success ">edit</a>
-      <a href="" class="badge badge-danger">delete</a>
+      <a href="{{route('data0247.edit',$pelanggan->id)}}" class="btn btn-sm btn-success ">edit....</a>
+      <form action="{{route('data0247.destroy',$pelanggan->id)}}" method="post">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-sm btn-danger">delete</button>
+      </form>
       </td>
     </tr>
   @endforeach
