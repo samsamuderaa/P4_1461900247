@@ -6,7 +6,7 @@
 <div class="container">
 <div class="row">
 <div class="col-10">
-    <h1>Selamat Datang</h1>
+    <h1>Silahkan Klik Data Untuk Melihat Tabel</h1>
 </div>
 </div>
 </div>

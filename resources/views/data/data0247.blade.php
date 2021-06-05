@@ -27,12 +27,13 @@
       <td>{{$anggota->anggota_jk}}</td>
       <td>{{$anggota->anggota_telp}}</td>
       <td>
-      <a href="/data/edit0247/{{ $anggota->anggota_id }}" class="badge badge-success ">edit</a>
+      <a href="{{route('data0247.edit',$anggota->anggota_id)}}" class="badge badge-success ">edit</a>
       <a href="" class="badge badge-danger">delete</a>
       </td>
     </tr>
   @endforeach
   </tbody>
+  <a href="{{route('data0247.create')}}" class="btn btn-sm btn-success">Tambah</a>
 </table>
 </div>
 </div>

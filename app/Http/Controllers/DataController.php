@@ -26,7 +26,7 @@ class DataController extends Controller
      */
     public function create()
     {
-        //
+        return view('data.tambah0247');
     }
 
     /**
@@ -37,7 +37,24 @@ class DataController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //pertama cek validasi
+        $this->validate($request,[
+            'anggota_nama'  => 'required',
+            'anggota_alamat'=> 'required',
+            'anggota_jk'    => 'required',
+            'anggota_telp'  => 'required'
+        ]);
+
+        //selanjutnya insert ke database
+        DB::table('anggota')->insert([
+            'anggota_nama'  => $request->anggota_nama,
+            'anggota_alamat'=> $request->anggota_alamat,
+            'anggota_jk'    => $request->anggota_jk,
+            'anggota_telp'  => $request->anggota_telp
+        ]);
+
+        //setelah berhasil insert di redirect
+        return redirect('/data0247')->with('status','Data anggota Berhasil Ditambahkan');
     }
 
     /**
@@ -59,10 +76,14 @@ class DataController extends Controller
      */
     public function edit($id)
     {
-	    // mengambil data pegawai berdasarkan id yang dipilih
-        $soal1 = DB::table('anggota')->where('anggota_id',$id)->get();
-	    // passing data pegawai yang didapat ke view edit.blade.php
-	    return view('data.edit0247',['anggota' => $soal1]);
+	    
+       // $soal1 = DB::table('anggota')->where('anggota_id',$id)->get();
+	   // return view('data.edit0247',['anggota' => $soal1]);
+         //mengambil data dari database
+         $soal1 = DB::table('anggota')->where('anggota_id',$id)->first();
+        
+         //passing data ke view edit.blade.php
+         return view('data.edit0247',compact('soal1'));
  
     }
 
@@ -73,17 +94,19 @@ class DataController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        // update data pegawai
-        DB::table('anggota')->where('anggota_id',$request->id)->update([
-            'anggota_nama' => $request->nama,
-            'anggota_alamat' => $request->alamat,
-            'anggota_jk' => $request->jk,
-            'anggota_telp' => $request->telp
+        //mengupdate data
+        
+        DB::table('anggota')->where('anggota_id',$id)->update([
+            'anggota_nama'      => $request->anggota_nama,
+            'anggota_alamat'    => $request->anggota_alamat,
+            'anggota_jk'        => $request->anggota_jk,
+            'anggota_telp'      => $request->anggota_telp
         ]);
-        // alihkan halaman ke halaman pegawai
-        return redirect('data0247');
+                
+        //redirect setelah berhasil menjalankan update
+        return redirect('/data0247')->with('status','Data Berhasil Diupdate');
     }
 
     /**
