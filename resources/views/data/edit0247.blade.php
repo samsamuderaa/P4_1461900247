@@ -10,16 +10,16 @@
                 <div class="card-header">Edit Data</div>
 
                 <div class="card-body">
-                    <form action="{{route('data0247.update',$anggota->anggota_id)}}" method="PUT">
+                    <form action="{{route('data0247.update',$p_ganjil3->id)}}" method="PUT">
                         @csrf
                         @method('PUT')
                         <div class="form-group row">
-                            <label for="anggota_nama" class="col-md-4 col-form-label text-md-right">Nama </label>
+                            <label for="nama" class="col-md-4 col-form-label text-md-right">Nama </label>
 
                             <div class="col-md-6">
-                                <input id="anggota_nama" type="text" class="form-control @error('anggota_nama') is-invalid @enderror" name="anggota_nama" value="{{ $anggota->anggota_nama }}" required autocomplete="anggota_nama" autofocus>
+                                <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ $p_ganjil3->nama }}" required autocomplete="nama" autofocus>
 
-                                @error('anggota_nama')
+                                @error('nama')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -28,46 +28,18 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="anggota_alamat" class="col-md-4 col-form-label text-md-right">Alamat</label>
+                            <label for="alamat" class="col-md-4 col-form-label text-md-right">Alamat</label>
 
                             <div class="col-md-6">
-                                <input id="anggota_alamat" type="anggota_alamat" class="form-control @error('anggota_alamat') is-invalid @enderror" name="anggota_alamat" value="{{ $anggota->anggota_alamat }}" required autocomplete="anggota_alamat" autofocus>
+                                <input id="alamat" type="alamat" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{ $p_ganjil3->alamat }}" required autocomplete="alamat" autofocus>
 
-                                @error('anggota_alamat')
+                                @error('alamat')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="anggota_jk" class="col-md-4 col-form-label text-md-right">JK</label>
-
-                            <div class="col-md-6">
-                                <input id="anggota_jk" type="text" class="form-control @error('anggota_jk') is-invalid @enderror" name="anggota_jk" value="{{ $anggota->anggota_jk }}" required autocomplete="anggota_jk" autofocus>
-
-                                @error('anggota_jk')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="anggota_telp" class="col-md-4 col-form-label text-md-right">telp</label>
-
-                            <div class="col-md-6">
-                                <textarea id="anggota_telp" class="form-control @error('anggota_telp') is-invalid @enderror" name="anggota_telp" value="{{ old('anggota_telp') }}" required autocomplete="anggota_telp" autofocus>{{$anggota->anggota_telp}}</textarea>
-
-                                @error('anggota_telp')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>                
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">

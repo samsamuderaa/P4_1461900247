@@ -13,21 +13,17 @@
       <th scope="col">id</th>
       <th scope="col">nama</th>
       <th scope="col">alamat</th>
-      <th scope="col">jk</th>
-      <th scope="col">tlfn</th>
       <th scope="col">aksi</th>
     </tr>
   </thead>
   <tbody>
-  @foreach ($anggota as $anggota)
+  @foreach ($pelanggan as $pelanggan)
     <tr>
-      <th scope="row">{{$anggota->anggota_id}}</th>
-      <td>{{$anggota->anggota_nama}}</td>
-      <td>{{$anggota->anggota_alamat}}</td>
-      <td>{{$anggota->anggota_jk}}</td>
-      <td>{{$anggota->anggota_telp}}</td>
+      <th scope="row">{{$pelanggan->id}}</th>
+      <td>{{$pelanggan->nama}}</td>
+      <td>{{$pelanggan->alamat}}</td>
       <td>
-      <a href="{{route('data0247.edit',$anggota->anggota_id)}}" class="badge badge-success ">edit</a>
+      <a href="{{route('data0247.edit',$pelanggan->id)}}" class="badge badge-success ">edit</a>
       <a href="" class="badge badge-danger">delete</a>
       </td>
     </tr>

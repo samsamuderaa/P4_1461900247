@@ -14,8 +14,8 @@ class DataController extends Controller
      */
     public function index()
     {
-            $soal1 = DB::table('anggota')->get();
-            return view('data.data0247', ['anggota' => $soal1]);
+            $p_ganjil3 = DB::table('pelanggan')->get();
+            return view('data.data0247', ['pelanggan' => $p_ganjil3]);
 
     }
 
@@ -39,18 +39,15 @@ class DataController extends Controller
     {
         //pertama cek validasi
         $this->validate($request,[
-            'anggota_nama'  => 'required',
-            'anggota_alamat'=> 'required',
-            'anggota_jk'    => 'required',
-            'anggota_telp'  => 'required'
+            'nama'      => 'required',
+            'alamat'    => 'required',
         ]);
 
         //selanjutnya insert ke database
-        DB::table('anggota')->insert([
-            'anggota_nama'  => $request->anggota_nama,
-            'anggota_alamat'=> $request->anggota_alamat,
-            'anggota_jk'    => $request->anggota_jk,
-            'anggota_telp'  => $request->anggota_telp
+        DB::table('pelanggan')->insert([
+            'nama'  => $request->nama,
+            'alamat'=> $request->alamat,
+            
         ]);
 
         //setelah berhasil insert di redirect
@@ -80,10 +77,10 @@ class DataController extends Controller
        // $soal1 = DB::table('anggota')->where('anggota_id',$id)->get();
 	   // return view('data.edit0247',['anggota' => $soal1]);
          //mengambil data dari database
-         $soal1 = DB::table('anggota')->where('anggota_id',$id)->first();
+         $p_ganjil3 = DB::table('pelanggan')->where('id',$id)->first();
         
          //passing data ke view edit.blade.php
-         return view('data.edit0247',compact('soal1'));
+         return view('data.edit0247',compact('p_ganjil3'));
  
     }
 
@@ -98,11 +95,9 @@ class DataController extends Controller
     {
         //mengupdate data
         
-        DB::table('anggota')->where('anggota_id',$id)->update([
-            'anggota_nama'      => $request->anggota_nama,
-            'anggota_alamat'    => $request->anggota_alamat,
-            'anggota_jk'        => $request->anggota_jk,
-            'anggota_telp'      => $request->anggota_telp
+        DB::table('pelanggan')->where('pelanggan',$id)->update([
+            'nama'  => $request->nama,
+            'alamat'=> $request->alamat,
         ]);
                 
         //redirect setelah berhasil menjalankan update
