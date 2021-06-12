@@ -11,14 +11,14 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('data0247.store') }}">
                         @csrf
-
+                        
                         <div class="form-group row">
-                            <label for="nama" class="col-md-4 col-form-label text-md-right">Nama</label>
+                            <label for="judul" class="col-md-4 col-form-label text-md-right">judul</label>
 
                             <div class="col-md-6">
-                                <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') }}" required autocomplete="nama" autofocus>
+                                <input id="judul" type="text" class="form-control @error('judul') is-invalid @enderror" name="judul" value="{{ old('judul') }}" required autocomplete="judul" autofocus>
 
-                                @error('nama')
+                                @error('judul')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -27,18 +27,32 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="alamat" class="col-md-4 col-form-label text-md-right">Alamat</label>
+                            <label for="jenis" class="col-md-4 col-form-label text-md-right">jenis</label>
 
                             <div class="col-md-6">
-                                <input id="alamat" type="alamat" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat') }}" required autocomplete="alamat" autofocus>
+                                <input id="jenis" type="text" class="form-control @error('jenis') is-invalid @enderror" name="jenis" value="{{ old('jenis') }}" required autocomplete="jenis" autofocus>
 
-                                @error('alamat')
+                                @error('jenis')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                        </div>              
+                        </div>   
+
+                        <div class="form-group row">
+                            <label for="tahun_terbit" class="col-md-4 col-form-label text-md-right">tahun terbit</label>
+
+                            <div class="col-md-6">
+                                <input id="tahun_terbit" type="text" class="form-control @error('tahun_terbit') is-invalid @enderror" name="tahun_terbit" value="{{ old('tahun_terbit') }}" required autocomplete="tahun_terbit" autofocus>
+
+                                @error('tahun_terbit')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>           
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">

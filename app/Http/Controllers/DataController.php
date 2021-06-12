@@ -14,8 +14,13 @@ class DataController extends Controller
      */
     public function index()
     {
-            $p_ganjil3 = DB::table('pelanggan')->get();
-            return view('data.data0247', ['pelanggan' => $p_ganjil3]);
+           $data = DB::table('rak_buku')
+                    ->join('buku','buku.id','=','rak_buku.id')
+                    ->join('jenis_buku','jenis_buku.id','=','rak_buku.id')
+           ->get();
+            return view('data.data0247')->with('data',$data);
+            //$p_pagi = buku::all();
+           // return $p_pagi;
 
     }
 
@@ -39,14 +44,20 @@ class DataController extends Controller
     {
         //pertama cek validasi
         $this->validate($request,[
-            'nama'      => 'required',
-            'alamat'    => 'required',
+            'judul'         => 'required',
+            'jenis'         => 'required',
+            'tahun_terbit'  => 'required',
         ]);
 
         //selanjutnya insert ke database
-        DB::table('pelanggan')->insert([
-            'nama'  => $request->nama,
-            'alamat'=> $request->alamat,
+
+        DB::table('buku')->insert([
+            'judul'         => $request->judul,
+            'tahun_terbit'  => $request->tahun_terbit,
+            
+        ]);
+        DB::table('jenis_buku')->insert([
+            'jenis'         => $request->jenis,
             
         ]);
 
@@ -110,4 +121,5 @@ class DataController extends Controller
         DB::table('pelanggan')->where('id',$id)->delete();
         return redirect('/data0247')->with('status','Data Berhasil Dihapus');
     }
+    
 }

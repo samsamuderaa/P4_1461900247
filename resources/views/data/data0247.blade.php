@@ -11,20 +11,22 @@
   <thead class="thed-dark">
     <tr>
       <th scope="col">id</th>
-      <th scope="col">nama</th>
-      <th scope="col">alamat</th>
+      <th scope="col">judul</th>
+      <th scope="col">jenis</th>
+      <th scope="col">tahun_terbit</th>
       <th scope="col">aksi</th>
     </tr>
   </thead>
   <tbody>
-  @foreach ($pelanggan as $pelanggan)
+  @foreach ($data as $data)
     <tr>
-      <th scope="row">{{$pelanggan->id}}</th>
-      <td>{{$pelanggan->nama}}</td>
-      <td>{{$pelanggan->alamat}}</td>
+      <th scope="row">{{$data->id}}</th>
+      <td>{{$data->judul}}</td>
+      <td>{{$data->jenis}}</td>
+      <td>{{$data->tahun_terbit}}</td>
       <td>
-      <a href="{{route('data0247.edit',$pelanggan->id)}}" class="btn btn-sm btn-success ">edit....</a>
-      <form action="{{route('data0247.destroy',$pelanggan->id)}}" method="post">
+      <a href="{{route('data0247.edit',$data->id)}}" class="btn btn-sm btn-success ">edit....</a>
+      <form action="{{route('data0247.destroy',$data->id)}}" method="post">
         @csrf
         @method('DELETE')
         <button type="submit" class="btn btn-sm btn-danger">delete</button>
