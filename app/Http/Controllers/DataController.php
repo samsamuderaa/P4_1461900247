@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Data_1461900247;
 
 class DataController extends Controller
 {
@@ -14,15 +16,19 @@ class DataController extends Controller
      */
     public function index()
     {
-           $data = DB::table('rak_buku')
-                    ->join('buku','buku.id','=','rak_buku.id')
-                    ->join('jenis_buku','jenis_buku.id','=','rak_buku.id')
-           ->get();
+        $data = DB::table('buku')
+		->join('rak_buku','buku.id', '=', 'rak_buku.id_buku')
+		->join('jenis_buku','rak_buku.id_jenis_buku', '=', 'jenis_buku.id')
+		->get();
             return view('data.data0247')->with('data',$data);
             //$p_pagi = buku::all();
            // return $p_pagi;
 
     }
+    public function export_excel()
+	{
+		return Excel::download(new Data_1461900247, 'Data_1461900247.xlsx');
+	}
 
     /**
      * Show the form for creating a new resource.

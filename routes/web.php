@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,8 +28,5 @@ Route::get('/data0247', function () {
 });
 */
 
-Route::get('/', 'PagesController@index0247');
-Route::get('/contactus0247', 'PagesController@contactus0247');
-
-Route::resource('/data0247',DataController::class);
-
+Route::get('/', 'DataController@index');
+Route::get('/export_excel', 'DataController@export_excel');

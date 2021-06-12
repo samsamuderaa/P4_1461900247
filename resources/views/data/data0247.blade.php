@@ -14,7 +14,6 @@
       <th scope="col">judul</th>
       <th scope="col">jenis</th>
       <th scope="col">tahun_terbit</th>
-      <th scope="col">aksi</th>
     </tr>
   </thead>
   <tbody>
@@ -24,18 +23,11 @@
       <td>{{$data->judul}}</td>
       <td>{{$data->jenis}}</td>
       <td>{{$data->tahun_terbit}}</td>
-      <td>
-      <a href="{{route('data0247.edit',$data->id)}}" class="btn btn-sm btn-success ">edit....</a>
-      <form action="{{route('data0247.destroy',$data->id)}}" method="post">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-sm btn-danger">delete</button>
-      </form>
-      </td>
+      
     </tr>
   @endforeach
   </tbody>
-  <a href="{{route('data0247.create')}}" class="btn btn-sm btn-success">Tambah</a>
+  <a href="export_excel" class="btn btn-sm btn-success">export</a>
 </table>
 </div>
 </div>
